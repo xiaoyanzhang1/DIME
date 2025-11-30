@@ -1,0 +1,12 @@
+torch==2.7.1
+torchvision==0.22.1
+timm==0.6.12
+numpy==2.0.2
+scipy==1.13.1
+scikit-learn==1.6.1
+pillow==11.2.1
+matplotlib==3.9.4
+tqdm==4.67.1
+easydict==1.13
+thop==0.1.1-2209072238
+randaugment==1.0.2

@@ -1,0 +1,53 @@
+{
+    "prefix": "",
+    "dataset": "imagenetr",
+    "memory_size": 0,
+    "memory_per_class": 0,
+    "fixed_memory": false,
+    "shuffle": true,
+    "model_name": "onea",
+    "backbone_type": "vit_base_patch16_224_in21k_onea",
+    "device": ["0"],
+    "seed": [2],
+    "print_forget": true,
+
+    "use_imbalance_setting": true,
+    "task_imb_factor": 0.01,
+    "nb_tasks": 40,
+    "imbalance_order": "shuffle",
+
+    "merge_mode": "weighted_sum",
+    "rb_mode": "sv",
+    "lamda_k": 2.3979,
+
+
+    "rb_kappa": 2.0,
+    "rb_tau_q": 0.3,
+
+    "use_flexe": true,
+    "epoch_base": 40,
+    "epoch_min": 30,
+    "epoch_max": 50,
+    "epoch_ref_t0": 10,
+    "epoch_beta": 0.5,
+
+    
+    "init_lr": 0.03,
+    "init_epochs": 10,
+    "later_lr": 0.03,
+    "later_epochs": 10,
+    "batch_size": 24,
+    "weight_decay": 0.005,
+    "min_lr": 0,
+    "optimizer": "sgd",
+    "scheduler": "cosine",
+    "pretrained": true,
+    "vpt_type": "Deep",
+    "prompt_token_num": 5,
+    "ffn_num": 64,
+    "use_diagonal": true,
+
+    
+    "moni_adam": false,
+    "adapter_num": -1
+}
