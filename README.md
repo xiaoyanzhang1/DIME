@@ -44,7 +44,7 @@ We evaluate on four long-tailed food recognition benchmarks under step-imbalance
 | **VFN186-T2D** | Population-specific variant for Type 2 Diabetes dietary patterns | 186 | [VFN186](https://github.com/JiangpengHe/VFN186) |
 | **Food101-LT** | Long-tailed variant of the widely used Food101 benchmark | 101 | [Food101](https://huggingface.co/datasets/ethz/food101) |
 
-The VFN series datasets are from [He et al., 2023] and reflect real-world dietary consumption patterns across different health conditions and user groups. Please download VFN186 from [https://github.com/JiangpengHe/VFN186](https://github.com/JiangpengHe/VFN186). Food101-LT is derived from the original Food101 dataset (available at [https://huggingface.co/datasets/ethz/food101](https://huggingface.co/datasets/ethz/food101)) by applying a long-tailed sampling procedure.
+The VFN series datasets are from [He et al., 2025](https://doi.org/10.1109/TMM.2025.3632640) and reflect real-world dietary consumption patterns across different health conditions and user groups. Please download VFN186 from [https://github.com/JiangpengHe/VFN186](https://github.com/JiangpengHe/VFN186). Food101-LT is derived from the original Food101 dataset (available at [https://huggingface.co/datasets/ethz/food101](https://huggingface.co/datasets/ethz/food101)) by applying a long-tailed sampling procedure.
 
 After downloading, place the datasets under the `data/` directory.
 
