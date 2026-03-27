@@ -35,16 +35,16 @@ DIME maintains a **single merged adapter** for inference, achieving competitive 
 
 ## Datasets
 
-We evaluate on four long-tailed food recognition benchmarks under step-imbalanced protocols. The datasets are available at: **[Google Drive link — coming soon]**
+We evaluate on four long-tailed food recognition benchmarks under step-imbalanced protocols.
 
-| Dataset | Description | Classes |
-|---|---|---|
-| **VFN186-LT** | Visual Food Recognition benchmark with long-tailed distribution reflecting general dietary patterns | 186 |
-| **VFN186-Insulin** | Population-specific variant capturing dietary patterns of insulin-dependent individuals | 186 |
-| **VFN186-T2D** | Population-specific variant for Type 2 Diabetes dietary patterns | 186 |
-| **Food101-LT** | Long-tailed variant of the widely used Food101 benchmark | 101 |
+| Dataset | Description | Classes | Source |
+|---|---|---|---|
+| **VFN186-LT** | Visual Food Recognition benchmark with long-tailed distribution reflecting general dietary patterns | 186 | [VFN186](https://github.com/JiangpengHe/VFN186) |
+| **VFN186-Insulin** | Population-specific variant capturing dietary patterns of insulin-dependent individuals | 186 | [VFN186](https://github.com/JiangpengHe/VFN186) |
+| **VFN186-T2D** | Population-specific variant for Type 2 Diabetes dietary patterns | 186 | [VFN186](https://github.com/JiangpengHe/VFN186) |
+| **Food101-LT** | Long-tailed variant of the widely used Food101 benchmark | 101 | [Food101](https://huggingface.co/datasets/ethz/food101) |
 
-The VFN series datasets are from [He et al., 2023] and reflect real-world dietary consumption patterns across different health conditions and user groups. Food101-LT is derived from the original Food101 dataset by applying a long-tailed sampling procedure.
+The VFN series datasets are from [He et al., 2023] and reflect real-world dietary consumption patterns across different health conditions and user groups. Please download VFN186 from [https://github.com/JiangpengHe/VFN186](https://github.com/JiangpengHe/VFN186). Food101-LT is derived from the original Food101 dataset (available at [https://huggingface.co/datasets/ethz/food101](https://huggingface.co/datasets/ethz/food101)) by applying a long-tailed sampling procedure.
 
 After downloading, place the datasets under the `data/` directory.
 
