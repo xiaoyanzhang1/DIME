@@ -29,7 +29,7 @@ Existing continual learning methods typically assume balanced task structures, w
 
 DIME maintains a **single merged adapter** for inference, achieving competitive efficiency while consistently outperforming strong baselines by more than 3%.
 
-<p align="center"><img src="./assets/framework.png" width="90%"></p>
+<p align="center"><img src="./assets/framework.png" width="100%"></p>
 
 ---
 
