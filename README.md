@@ -86,11 +86,6 @@ Key hyperparameters in each config:
 | `rb_r_head_frac` | Fraction of singular directions treated as "head" in rank-wise modulation |
 | `rb_rho_head` / `rb_rho_tail` | Update coefficients for head/tail singular directions |
 
-You can also use the provided training script:
-
-```bash
-bash train.sh
-```
 
 ---
 
