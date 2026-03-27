@@ -51,7 +51,7 @@ def _train(args: dict) -> None:
             args["increment"],
         )
     elif "task_imb_factor" in args:
-        logs_dir = "logs_SI/{}/{}/{}/{}/{}".format(
+        logs_dir = "logs_IM/{}/{}/{}/{}/{}".format(
             args["imbalance_order"],
             args["dataset"],
             args["task_imb_factor"],
@@ -79,7 +79,7 @@ def _train(args: dict) -> None:
             timestamp,
         )
     elif "task_imb_factor" in args:
-        logfilename = "logs_SI/{}/{}/{}/{}/{}/{}_BS{}_{}_{}_T{}".format(
+        logfilename = "logs_IM/{}/{}/{}/{}/{}/{}_BS{}_{}_{}_T{}".format(
             args["imbalance_order"],
             args["dataset"],
             args["task_imb_factor"],
@@ -91,20 +91,6 @@ def _train(args: dict) -> None:
             args["backbone_type"],
             timestamp,
         )
-    # else:
-    #     logfilename = "logs_my/{}/{}/{}/{}/{}/{}_BS{}_{}_{}_T{}".format(
-    #         data_type,
-    #         args["model_name"],
-    #         args["dataset"],
-    #         args["imbalance_order"],
-    #         args["nb_tasks"],
-    #         args["prefix"],
-    #         args["batch_size"],
-    #         args["seed"],
-    #         args["backbone_type"],
-    #         timestamp,
-    #     )
-
     # --------------------------
     # Logger setup
     # --------------------------
@@ -139,8 +125,6 @@ def _train(args: dict) -> None:
         args["dataset"],
         args["shuffle"],
         args["seed"],
-        # args["init_cls"],
-        # args["increment"],
         args,
     )
 

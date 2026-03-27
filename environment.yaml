@@ -1,4 +1,4 @@
-name: onea
+name: dime
 channels:
   - pytorch
   - nvidia

@@ -9,16 +9,16 @@ def get_backbone(args, pretrained: bool = False):
     """
     Build the backbone network according to args["backbone_type"].
 
-    Currently supports ViT-Base variants with One-A style adapters.
+    Currently supports ViT-Base variants with DIME style adapters.
     """
     name = args["backbone_type"].lower()
 
-    # ViT-OneA variants
-    if "_onea" in name:
+    # ViT-DIME variants
+    if "_dime" in name:
         ffn_num = args["ffn_num"]
 
-        if args["model_name"] == "onea":
-            from backbone import vit_onea
+        if args["model_name"] == "dime":
+            from backbone import vit_dime
             from easydict import EasyDict
 
             tuning_config = EasyDict(
@@ -36,16 +36,16 @@ def get_backbone(args, pretrained: bool = False):
                 _device=args["device"][0],
             )
 
-            if name == "vit_base_patch16_224_onea":
-                model = vit_onea.vit_base_patch16_224_onea(
+            if name == "vit_base_patch16_224_dime":
+                model = vit_dime.vit_base_patch16_224_dime(
                     num_classes=0,
                     global_pool=False,
                     drop_path_rate=0.0,
                     tuning_config=tuning_config,
                 )
                 model.out_dim = 768
-            elif name == "vit_base_patch16_224_in21k_onea":
-                model = vit_onea.vit_base_patch16_224_in21k_onea(
+            elif name == "vit_base_patch16_224_in21k_dime":
+                model = vit_dime.vit_base_patch16_224_in21k_dime(
                     num_classes=0,
                     global_pool=False,
                     drop_path_rate=0.0,
@@ -138,7 +138,7 @@ class Adapter_merge(BaseNet):
     """
     Adapter-based incremental classifier with a cosine classifier head.
 
-    - Uses the ViT-OneA backbone with adapters.
+    - Uses the ViT-DIME backbone with adapters.
     - Maintains a proxy FC for current-task training.
     """
 

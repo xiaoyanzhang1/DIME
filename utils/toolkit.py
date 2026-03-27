@@ -192,3 +192,26 @@ def read_images_labels_imageneta(lines):
         images.append(path)
         labels.append(int(label))
     return np.array(images), np.array(labels)
+
+
+def read_images_labels_vfn(imgs):
+    images = []
+    labels = []
+    for item in imgs:
+        item = item.rstrip()
+        if not item:
+            continue
+
+        path, label = item.rsplit(' ', 1)
+
+        path = path.replace(' ', '_')
+
+        images.append(path)
+        labels.append(int(label))
+
+    return np.array(images), np.array(labels)
+
+
+
+
+

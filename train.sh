@@ -1,0 +1,1 @@
+python main.py --config=./exps/vfn186_ins.json

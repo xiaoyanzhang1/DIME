@@ -1,10 +1,10 @@
 import numpy as np
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-from utils.data import iCIFAR224, iImageNetR, iImageNetA, CUB
-
+from utils.data import Food101_lt, VFN, VFN_insulin, VFN_t2d
+import random
 
 def get_exp_imbalance(
     cls_num: int,
@@ -60,15 +60,7 @@ def get_exp_imbalance(
 
 
 class DataManager(object):
-    def __init__(
-        self,
-        dataset_name,
-        shuffle,
-        seed,
-        # init_cls=None,
-        # increment=None,
-        args=None,
-    ):
+    def __init__(self, dataset_name, shuffle, seed, args=None):
         self.args = args
         self.dataset_name = dataset_name
         self._setup_data(dataset_name, shuffle, seed)
@@ -126,15 +118,7 @@ class DataManager(object):
     def nb_classes(self):
         return len(self._class_order)
 
-    def get_dataset(
-        self,
-        indices,
-        source,
-        mode,
-        appendent=None,
-        ret_data: bool = False,
-        m_rate=None,
-    ):
+    def get_dataset(self, indices, source, mode, appendent=None, ret_data: bool = False, m_rate=None):
         if source == "train":
             x, y = self._train_data, self._train_targets
         elif source == "test":
@@ -182,14 +166,7 @@ class DataManager(object):
         else:
             return DummyDataset(data, targets, trsf, self.use_path)
 
-    def get_dataset_with_split(
-        self,
-        indices,
-        source,
-        mode,
-        appendent=None,
-        val_samples_per_class: int = 0,
-    ):
+    def get_dataset_with_split(self, indices, source, mode, appendent=None, val_samples_per_class: int = 0):
         if source == "train":
             x, y = self._train_data, self._train_targets
         elif source == "test":
@@ -329,13 +306,43 @@ class DummyDataset(Dataset):
     def __len__(self):
         return len(self.images)
 
+    # def __getitem__(self, idx):
+    #     if self.use_path:
+    #         image = self.trsf(pil_loader(self.images[idx]))
+    #     else:
+    #         image = self.trsf(Image.fromarray(self.images[idx]))
+    #     label = self.labels[idx]
+    #     return idx, image, label
+    # def __getitem__(self, idx):
+    #     if self.use_path:
+    #         img = pil_loader(self.images[idx])
+    #         if img is None:
+    #             return None  # <-- missing or corrupted
+    #         image = self.trsf(img)
+    #     else:
+    #         image = self.trsf(Image.fromarray(self.images[idx]))
+
+    #     label = self.labels[idx]
+    #     return idx, image, label
+
     def __getitem__(self, idx):
         if self.use_path:
-            image = self.trsf(pil_loader(self.images[idx]))
+            for _ in range(10):  
+                img = pil_loader(self.images[idx])
+                if img is not None:
+                    image = self.trsf(img)
+                    label = self.labels[idx]
+                    return idx, image, label
+                idx = random.randrange(len(self.images))
+
+            img = Image.new("RGB", (224, 224))
+            image = self.trsf(img)
+            label = self.labels[idx]
+            return idx, image, label
         else:
             image = self.trsf(Image.fromarray(self.images[idx]))
-        label = self.labels[idx]
-        return idx, image, label
+            label = self.labels[idx]
+            return idx, image, label
 
 
 def _map_new_class_index(y, order):
@@ -344,14 +351,14 @@ def _map_new_class_index(y, order):
 
 def _get_idata(dataset_name, args=None):
     name = dataset_name.lower()
-    if name == "cifar224":
-        return iCIFAR224(args)
-    elif name == "imagenetr":
-        return iImageNetR(args)
-    elif name == "imageneta":
-        return iImageNetA()
-    elif name == "cub":
-        return CUB()
+    if name == "food101_lt":
+        return Food101_lt()
+    elif name == "vfn":
+        return VFN()
+    elif name == "vfn_insulin":
+        return VFN_insulin()
+    elif name == "vfn_t2d":
+        return VFN_t2d()
     else:
         raise NotImplementedError("Unknown dataset {}.".format(dataset_name))
 
@@ -364,9 +371,15 @@ def pil_loader(path):
         https://pytorch.org/docs/stable/_modules/torchvision/datasets/folder.html#ImageFolder
     """
     # Open path as file to avoid ResourceWarning
-    with open(path, "rb") as f:
-        img = Image.open(f)
-        return img.convert("RGB")
+    # with open(path, "rb") as f:
+    #     img = Image.open(f)
+    #     return img.convert("RGB")
+    try:
+        with open(path, "rb") as f:
+            img = Image.open(f)
+            return img.convert("RGB")
+    except (FileNotFoundError, IsADirectoryError, PermissionError, OSError, UnidentifiedImageError):
+        return None
 
 
 def accimage_loader(path):
@@ -395,3 +408,27 @@ def default_loader(path):
         return accimage_loader(path)
     else:
         return pil_loader(path)
+
+
+
+
+from torch.utils.data.dataloader import default_collate
+
+class SkipMissingCollate:
+    def __init__(self):
+        self.missing = 0
+
+    def reset(self):
+        self.missing = 0
+
+    def __call__(self, batch):
+        kept = []
+        for item in batch:
+            if item is None:
+                self.missing += 1
+            else:
+                kept.append(item)
+
+        if len(kept) == 0:
+            return None  
+        return default_collate(kept)
