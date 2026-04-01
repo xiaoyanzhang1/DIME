@@ -1,8 +1,11 @@
 # Dual-Imbalance-aware Adapter Merging for Continual Food Recognition
 
 <p align="center">
-    <a href="https://arxiv.org/pdf/xxxx">
+    <!-- <a href="https://arxiv.org/pdf/xxxx">
             <img alt="CVPR DIME" src="https://img.shields.io/badge/CVPR 2026-DIME-blue">
+    </a> -->
+    <a href="https://arxiv.org/pdf/2603.29133v1">
+            <img alt="CVPR DIME" src="https://img.shields.io/badge/arXiv-DIME-red">
     </a>
 </p>
 
@@ -113,10 +116,13 @@ We would like to thank [PILOT: A Pre-Trained Model-Based Continual Learning Tool
 If you find this work useful for your research, please consider citing our paper:
 
 ```bibtex
-@inproceedings{xx,
-  title     = {Dual-Imbalance Continual Learning for Real-World Food Recognition},
-  author    = {Zhang, Xiaoyan and He, Jiangpeng},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops},
-  year      = {2026}
+@misc{zhang2026dualimbalancecontinuallearningrealworld,
+      title={Dual-Imbalance Continual Learning for Real-World Food Recognition}, 
+      author={Xiaoyan Zhang and Jiangpeng He},
+      year={2026},
+      eprint={2603.29133},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2603.29133}, 
 }
 ```
