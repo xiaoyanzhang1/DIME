@@ -116,13 +116,10 @@ We would like to thank [PILOT: A Pre-Trained Model-Based Continual Learning Tool
 If you find this work useful for your research, please consider citing our paper:
 
 ```bibtex
-@misc{zhang2026dualimbalancecontinuallearningrealworld,
-      title={Dual-Imbalance Continual Learning for Real-World Food Recognition}, 
-      author={Xiaoyan Zhang and Jiangpeng He},
-      year={2026},
-      eprint={2603.29133},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2603.29133}, 
+@article{zhang2026dual,
+  title={Dual-Imbalance Continual Learning for Real-World Food Recognition},
+  author={Zhang, Xiaoyan and He, Jiangpeng},
+  journal={arXiv preprint arXiv:2603.29133},
+  year={2026}
 }
 ```
