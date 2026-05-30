@@ -1,11 +1,11 @@
 # Dual-Imbalance-aware Adapter Merging for Continual Food Recognition
 
 <p align="center">
-    <!-- <a href="https://arxiv.org/pdf/xxxx">
-            <img alt="CVPR DIME" src="https://img.shields.io/badge/CVPR 2026-DIME-blue">
-    </a> -->
-    <a href="[https://arxiv.org/pdf/2603.29133v1](https://openaccess.thecvf.com/content/CVPR2026W/MTF/papers/Zhang_Dual-Imbalance_Continual_Learning_for_Real-World_Food_Recognition_CVPRW_2026_paper.pdf)">
-            <img alt="CVPRW DIME" src="https://img.shields.io/badge/CVPRW-DIME-blue">
+    <a href="https://openaccess.thecvf.com/content/CVPR2026W/MTF/papers/Zhang_Dual-Imbalance_Continual_Learning_for_Real-World_Food_Recognition_CVPRW_2026_paper.pdf">
+        <img alt="CVPRW 2026" src="https://img.shields.io/badge/CVPRW-2026-blue">
+    </a>
+    <a href="https://pytorch.org/">
+        <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-Implementation-red.svg">
     </a>
 </p>
 
