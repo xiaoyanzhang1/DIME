@@ -4,10 +4,14 @@
     <!-- <a href="https://arxiv.org/pdf/xxxx">
             <img alt="CVPR DIME" src="https://img.shields.io/badge/CVPR 2026-DIME-blue">
     </a> -->
-    <a href="https://arxiv.org/pdf/2603.29133v1">
-            <img alt="CVPR DIME" src="https://img.shields.io/badge/arXiv-DIME-red">
+    <a href="[https://arxiv.org/pdf/2603.29133v1](https://openaccess.thecvf.com/content/CVPR2026W/MTF/papers/Zhang_Dual-Imbalance_Continual_Learning_for_Real-World_Food_Recognition_CVPRW_2026_paper.pdf)">
+            <img alt="CVPRW DIME" src="https://img.shields.io/badge/CVPRW-DIME-blue">
     </a>
 </p>
+
+<h3 align="center">
+🏆 Best Paper Award at the 3rd CVPR MetaFood Workshop
+</h3>
 
 This repository provides the official PyTorch implementation of **DIME**, a parameter-efficient continual learning framework for real-world food recognition under **dual imbalance** — long-tailed class distributions combined with step-imbalanced task sizes.
 
@@ -116,10 +120,11 @@ We would like to thank [PILOT: A Pre-Trained Model-Based Continual Learning Tool
 If you find this work useful for your research, please consider citing our paper:
 
 ```bibtex
-@article{zhang2026dual,
+@inproceedings{zhang2026dual,
   title={Dual-Imbalance Continual Learning for Real-World Food Recognition},
   author={Zhang, Xiaoyan and He, Jiangpeng},
-  journal={arXiv preprint arXiv:2603.29133},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={9662--9672},
   year={2026}
 }
 ```
